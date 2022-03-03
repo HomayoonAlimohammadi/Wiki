@@ -1,0 +1,20 @@
+{% extends 'encyclopedia/layout.html' %}  
+
+{% block title %}  
+{% if state == 'CREATE' %}
+Create
+{% elif state == 'EDIT' %}
+Edit
+{% endif %}
+{% endblock %} 
+
+{% block body %} 
+{% if error %} 
+<li style="color:red;">Article Title already exists!</li>
+{% endif %}
+<form action="." method="post">
+{% csrf_token %} 
+{{ form.as_p }} 
+<input type="submit">
+</form>
+{% endblock %} 
